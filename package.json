@@ -1,7 +1,7 @@
 {
-  "name": "node-typescript-boilerplate",
-  "version": "0.0.0",
-  "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
+  "name": "archipelago_session_api",
+  "version": "0.1.0",
+  "description": "Simple api to scrape session data from archipelago",
   "type": "module",
   "engines": {
     "node": ">= 18.12 <19"
@@ -22,7 +22,7 @@
     "typescript": "~5.0"
   },
   "scripts": {
-    "start": "node build/src/main.js",
+    "start": "npm run build && node build/src/main.js",
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.json",
@@ -33,9 +33,10 @@
     "prettier": "prettier --config .prettierrc --write .",
     "test:watch": "jest --watch"
   },
-  "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
+  "author": "JonesiBlitz",
   "license": "Apache-2.0",
   "dependencies": {
+    "archipelago.js": "^0.5.3",
     "tslib": "~2.5"
   },
   "volta": {

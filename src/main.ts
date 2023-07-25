@@ -1,3 +1,8 @@
+import { collectTheData } from './archipelago.js';
+
+import { data } from './in.js';
+
+
 /**
  * Some predefined delay values (in milliseconds).
  */
@@ -11,7 +16,7 @@ export enum Delays {
  * Returns a Promise<string> that resolves after a given time.
  *
  * @param {string} name - A name.
- * @param {number=} [delay=Delays.Medium] - A number of milliseconds to delay resolution of the Promise.
+ * @param {number} [delay=Delays.Medium] - A number of milliseconds to delay resolution of the Promise.
  * @returns {Promise<string>}
  */
 function delayedHello(
@@ -32,3 +37,23 @@ export async function greeter(name: any) { // eslint-disable-line @typescript-es
   // The name parameter should be of type string. Any is used only to trigger the rule.
   return await delayedHello(name, Delays.Long);
 }
+
+type Data = {
+  player: string;
+  game: string;
+}
+
+await greeter('World').then((greeting: string) => console.log(greeting));
+for (const value of data as Data[]) {
+  await collectTheData({
+    url: "archipelago.gg:64108",
+    game: value?.game,
+    playerName: value?.player
+  });
+}
+// await collectTheData({
+//   url: "archipelago.gg:64108",
+//   game: "Pokemon Red and Blue",
+//   playerName: "BlueTrainBlitz",
+// });
+
